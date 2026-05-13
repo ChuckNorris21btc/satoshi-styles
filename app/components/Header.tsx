@@ -6,17 +6,18 @@ import { motion } from 'framer-motion';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems = ['Home', 'Clothing', 'Contact'];
+  const navItems = ['Home', 'Clothing', 'Kontakt'];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-900">
-      <div className="flex items-center justify-between px-6 py-4 md:px-8">
+    <header className="fixed top-12 left-0 right-0 z-50 bg-black border-b border-white/10">
+      <div className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6">
         {/* Logo */}
-        <div className="text-white uppercase font-bold text-lg md:text-xl tracking-widest">
-          Satoshi Styles
+        <div className="font-[family-name:var(--font-cormorant)] font-bold text-white tracking-[0.3em]">
+          <div className="text-sm md:text-base leading-none">SATOSHI</div>
+          <div className="text-sm md:text-base leading-none">STYLES</div>
         </div>
 
-        {/* Hamburger - Desktop Nav */}
+        {/* Desktop Navigation + Hamburger Container */}
         <div className="flex items-center gap-8">
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8">
@@ -24,7 +25,7 @@ export default function Header() {
               <a
                 key={item}
                 href="#"
-                className="text-white text-sm uppercase tracking-wide hover:text-orange-500 transition-colors duration-200 cursor-pointer"
+                className="font-[family-name:var(--font-montserrat)] text-white text-xs uppercase tracking-[0.15em] hover:text-[#F7931A] transition-colors duration-200 cursor-pointer"
               >
                 {item}
               </a>
@@ -61,15 +62,15 @@ export default function Header() {
         initial={{ x: '100%' }}
         animate={{ x: menuOpen ? 0 : '100%' }}
         transition={{ duration: 0.3 }}
-        className="fixed top-0 right-0 h-screen w-64 bg-black border-l border-gray-900 md:hidden"
+        className="fixed top-0 right-0 h-screen w-64 bg-black border-l border-white/10 md:hidden"
         style={{ marginTop: '0' }}
       >
-        <nav className="flex flex-col gap-6 p-8 pt-20">
+        <nav className="flex flex-col gap-6 p-6 pt-24">
           {navItems.map((item) => (
             <a
               key={item}
               href="#"
-              className="text-white uppercase tracking-wide hover:text-orange-500 transition-colors duration-200 cursor-pointer text-lg"
+              className="font-[family-name:var(--font-montserrat)] text-white uppercase tracking-[0.15em] hover:text-[#F7931A] transition-colors duration-200 cursor-pointer text-sm"
               onClick={() => setMenuOpen(false)}
             >
               {item}
