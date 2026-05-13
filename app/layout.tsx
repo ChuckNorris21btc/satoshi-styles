@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import Banner from "./components/Banner";
+import Footer from "./components/Footer";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -13,6 +13,12 @@ const cormorant = Cormorant_Garamond({
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -29,12 +35,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${montserrat.variable} ${bebas.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-montserrat)]">
-        <Banner />
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-montserrat)] bg-black">
         <Header />
-        <main className="pt-40">{children}</main>
+        <main className="pt-16 md:pt-20">{children}</main>
+        <Footer />
       </body>
     </html>
   );
