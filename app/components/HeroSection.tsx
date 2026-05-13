@@ -1,11 +1,15 @@
-'use client';
-
 export default function HeroSection() {
   return (
-    <div className="w-full bg-white">
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold">Hero Section - zu planen</h1>
+    <section className="min-h-screen bg-black flex items-center justify-center px-6 py-20">
+      <div className="text-center max-w-2xl">
+        <p className="text-orange-500 text-sm uppercase tracking-widest mb-6">
+          Bitcoin Streetwear
+        </p>
+        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+          Philosophy Over Profit
+        </h1>
+        <div className="h-1 w-16 bg-orange-500 mx-auto" />
       </div>
-    </div>
+    </section>
   );
 }
