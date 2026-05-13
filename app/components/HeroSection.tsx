@@ -49,90 +49,70 @@ export default function HeroSection() {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
         className="min-h-screen flex items-center justify-center bg-black cursor-grab active:cursor-grabbing relative overflow-hidden"
+        style={{ perspective: '1200px' }}
       >
-        {/* 3D Rotating Bitcoin Container */}
-        <motion.div
-          animate={isDragging ? { rotateX: rotationX } : { rotateX: 0 }}
-          transition={isDragging ? { type: 'tween' } : { duration: 20, repeat: Infinity, ease: 'linear' }}
-          style={{ perspective: '1200px' }}
-          className="w-full h-full flex items-center justify-center"
+        {/* 3D Rotating Bitcoin SVG */}
+        <motion.svg
+          viewBox="0 0 800 400"
+          className="w-full max-w-2xl h-auto"
+          animate={{
+            rotateX: isDragging ? rotationX : 360,
+          }}
+          transition={{
+            rotateX: isDragging
+              ? { type: 'tween', duration: 0 }
+              : { duration: 25, repeat: Infinity, ease: 'linear' },
+          }}
+          style={{
+            filter: 'drop-shadow(0 0 60px rgba(255, 255, 255, 0.15))',
+          }}
         >
-          <motion.svg
-            viewBox="0 0 500 500"
-            className="w-96 h-96 md:w-[500px] md:h-[500px]"
-            style={{
-              rotateX: isDragging ? 0 : undefined,
-              filter: 'drop-shadow(0 0 40px rgba(255, 255, 255, 0.1))',
-            }}
+          {/* Bitcoin Logo Circle - Left side */}
+          <circle
+            cx="150"
+            cy="200"
+            r="100"
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.25)"
+            strokeWidth="3"
+          />
+
+          {/* Bitcoin B Symbol - Inside circle */}
+          <text
+            x="150"
+            y="210"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize="130"
+            fontWeight="700"
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.35)"
+            strokeWidth="2.5"
+            fontFamily="Georgia, serif"
           >
-            {/* Bitcoin B Logo with Circle */}
-            <g>
-              {/* Outer circle with transparency */}
-              <circle
-                cx="250"
-                cy="150"
-                r="90"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.3)"
-                strokeWidth="4"
-              />
+            ₿
+          </text>
 
-              {/* Bitcoin B letter */}
-              <text
-                x="250"
-                y="170"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize="100"
-                fontWeight="700"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.4)"
-                strokeWidth="2"
-                fontFamily="system-ui, -apple-system, sans-serif"
-              >
-                ₿
-              </text>
-            </g>
+          {/* "bitcoin" text - Right side, large */}
+          <text
+            x="520"
+            y="220"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize="160"
+            fontWeight="800"
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.3)"
+            strokeWidth="3"
+            fontFamily="system-ui, -apple-system, sans-serif"
+            letterSpacing="2"
+          >
+            bitcoin
+          </text>
+        </motion.svg>
 
-            {/* "bitcoin" text with transparency */}
-            <g>
-              <text
-                x="250"
-                y="320"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize="120"
-                fontWeight="700"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.35)"
-                strokeWidth="2.5"
-                fontFamily="system-ui, -apple-system, sans-serif"
-                letterSpacing="8"
-              >
-                bitcoin
-              </text>
-            </g>
-
-            {/* Optional subtle gradient effect */}
-            <defs>
-              <radialGradient id="bitcoinGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.1)" />
-                <stop offset="100%" stopColor="rgba(0, 0, 0, 0)" />
-              </radialGradient>
-            </defs>
-            <circle
-              cx="250"
-              cy="250"
-              r="250"
-              fill="url(#bitcoinGlow)"
-              opacity="0.5"
-            />
-          </motion.svg>
-        </motion.div>
-
-        {/* Overlay Content (Header will go here) */}
+        {/* Overlay Content (Header) */}
         <div className="absolute inset-0 flex flex-col pointer-events-none">
-          {/* Header placeholder */}
           <div className="flex justify-between items-center px-8 py-6 pointer-events-auto">
             <div className="text-white font-bold text-2xl">Satoshi Styles</div>
             <nav className="flex gap-8 text-white">
